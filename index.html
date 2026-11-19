@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#101318" />
+    <title>Last One Laughing — Replay gallery</title>
+    <link rel="stylesheet" href="shared/styles.css" />
+    <link rel="stylesheet" href="replay/replay.css?v=3" />
+  </head>
+  <body>
+    <main class="gallery">
+      <header class="masthead">
+        <div class="show-brand">
+          <span class="show-mark" aria-hidden="true">LOL</span>
+          <div><p class="show-name">Last One Laughing</p><h1>Replay gallery</h1></div>
+        </div>
+        <nav class="top-links" aria-label="Other screens">
+          <button type="button" class="audio-pill" id="audioPill" hidden>Enable sound</button>
+          
+          
+        </nav>
+      </header>
+
+      <section class="unlock" id="unlockPanel" hidden aria-labelledby="unlockTitle">
+        <h2 id="unlockTitle">This gallery is encrypted</h2>
+        <p class="muted">Enter the shared key to unlock it. The key is only used in your browser.</p>
+        <form id="unlockForm" class="unlock-form">
+          <input type="password" id="unlockInput" placeholder="Key or password" autocomplete="off" required />
+          <button type="submit">Unlock</button>
+        </form>
+        <p class="action-error" id="unlockError" role="alert" hidden></p>
+      </section>
+
+      <div class="layout">
+        <aside class="moments" aria-labelledby="momentsTitle">
+          <div class="moments-head">
+            <h2 id="momentsTitle">Moments <span class="drawer-meta" id="momentsCount"></span></h2>
+            <label class="star-filter"><input type="checkbox" id="starredOnly" /> Starred</label>
+          </div>
+          <p id="momentsStatus" class="muted" role="status">Loading…</p>
+          <ol id="momentsList" class="moments-list"></ol>
+        </aside>
+
+        <section class="player" aria-label="Saved moment replay">
+          <header class="player-head">
+            <div class="player-title">
+              <h2 id="momentTitle">Pick a moment</h2>
+              <p id="momentMeta" class="muted"></p>
+            </div>
+            <div class="player-actions">
+              <button type="button" class="star-toggle" id="starBtn" hidden aria-pressed="false">☆ Star</button>
+              <button type="button" id="noteBtn" hidden>Note</button>
+            </div>
+          </header>
+          <div class="angle-picker" id="angles" role="group" aria-label="Camera angle" hidden></div>
+          <div class="downloads" id="downloads" role="group" aria-label="Download video angles" hidden></div>
+          <div class="stage">
+            <div class="camera-grid" id="grid" hidden></div>
+            <p id="stageEmpty" class="muted">
+              Choose a moment to replay it here. Every camera angle plays together on one
+              clock, just like the TV review — switch angles, scrub, or jog ±2.5 s.
+            </p>
+          </div>
+          <div class="playout" id="playout" hidden>
+            <div class="timeline">
+              <span id="deckStatus" role="status">—</span>
+              <input id="timeline" type="range" min="0" max="0" step="any" value="0" aria-label="Replay position" disabled />
+              <span class="timecode" id="timecode"></span>
+            </div>
+            <div class="deck-controls" id="deckControls" role="group" aria-label="Replay playback">
+              <button type="button" data-action="restart">Replay</button>
+              <button type="button" data-action="back" aria-label="Rewind 2.5 seconds">−2.5 s</button>
+              <button type="button" data-action="toggle" id="playPause">Play</button>
+              <button type="button" data-action="forward" aria-label="Forward 2.5 seconds">+2.5 s</button>
+            </div>
+          </div>
+          <p id="playerError" class="action-error" role="alert" hidden></p>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="replay/replay.js?v=3"></script>
+  </body>
+</html>
